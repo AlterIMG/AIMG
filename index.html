@@ -611,6 +611,42 @@
     .banner-tool .banner-hint{font:10px/1.6 'DM Mono',monospace;color:#9287a6;margin:8px 0 0}
     @media(max-width:920px){.banner-workspace{grid-template-columns:1fr}.banner-head{flex-wrap:wrap}.banner-bubble{margin-left:0}}
     @media(max-width:500px){.banner-lab{margin-top:26px;border-radius:15px;padding:17px}.banner-bubble{font-size:9px}.banner-preview-panel{padding:8px}.banner-preview-meta{font-size:8px}.banner-preview-foot{font-size:10px}.banner-options button{padding:9px 11px}.banner-head h3{font-size:33px}}
+
+    /* ALTERIMAGE / V8 — little moments of delight, no dashboard clutter */
+    .v8-fold{margin:17px 0 5px;border:1px solid #554567;border-radius:14px;background:linear-gradient(135deg,#1c182b,#12111d);overflow:hidden;color:#eadff8}
+    .v8-fold>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 17px;cursor:pointer;user-select:none}
+    .v8-fold>summary::-webkit-details-marker{display:none}
+    .v8-fold>summary:focus-visible{outline:2px solid #d2ff8b;outline-offset:-3px}
+    .v8-fold[open]>summary{border-bottom:1px solid #403550}
+    .v8-fold .fold-title{display:flex;flex-direction:column;gap:5px;font:800 13px 'Syne',sans-serif;letter-spacing:.015em}
+    .v8-fold .fold-title small{font:10px/1.4 'Space Grotesk',sans-serif;color:#aa9cbf;letter-spacing:0;font-weight:500}
+    .v8-chevron{font:700 18px 'DM Mono',monospace;color:#d4ff92;transition:transform .2s}
+    .v8-fold[open] .v8-chevron{transform:rotate(45deg)}
+    .v8-fold-body{padding:16px}
+    .v8-vibes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+    .v8-vibe{cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:9px;min-height:99px;padding:13px 11px;border-radius:11px;background:#211a32;border:1px solid #5e4c74;color:#f6f0ff;text-align:left;transition:transform .2s,border-color .2s}
+    .v8-vibe:hover{transform:translateY(-2px);border-color:#d5b8ff}
+    .v8-vibe:focus-visible,.v8-action:focus-visible,.v8-vault-card button:focus-visible{outline:2px solid #d4ff87;outline-offset:3px}
+    .v8-vibe strong{font:800 11px 'Syne',sans-serif}
+    .v8-vibe small{color:#b4a7c8;line-height:1.4;font-size:10px}
+    .v8-vibe-swatch{width:32px;height:5px;border-radius:6px;background:linear-gradient(90deg,var(--v8a),var(--v8b));box-shadow:0 0 15px var(--v8a)}
+    .v8-card-layout{display:grid;grid-template-columns:minmax(110px,2fr) minmax(130px,3fr);gap:14px;align-items:center}
+    #v8IdentityCard{width:100%;height:auto;display:block;aspect-ratio:4/5;border:1px solid #75618b;border-radius:11px;background:#090b13}
+    .v8-info p{margin:0 0 13px;font-size:12px;line-height:1.65;color:#c0b1d0}
+    .v8-action{border:1px solid #c9ffa1;background:#d4ff8a;color:#1a230e;padding:13px 16px;border-radius:100px;font:800 11px 'Space Grotesk',sans-serif;cursor:pointer;width:100%;text-align:center}
+    .v8-info .v8-disclaimer{font:10px/1.6 'DM Mono',monospace;color:#9788ad;margin-top:11px}
+    #v8VaultEmpty{padding:15px 11px;font:12px/1.6 'Space Grotesk',sans-serif;color:#ad9ebe;text-align:center}
+    .v8-vault-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .v8-vault-card{border:1px solid #514263;background:#161421;border-radius:13px;padding:8px;min-width:0}
+    .v8-vault-card canvas{aspect-ratio:1;display:block;width:100%;height:auto;border-radius:8px;background:#0d0d17}
+    .v8-vault-title{font:700 11px 'Syne',sans-serif;color:#f2e6ff;padding:9px 2px 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .v8-vault-sub{font:9px 'DM Mono',monospace;color:#968aaa;padding:0 2px 10px}
+    .v8-vault-controls{display:flex;gap:6px}
+    .v8-vault-controls button{flex:1;min-width:0;border-radius:7px;padding:9px 5px;border:1px solid #77628e;background:#282036;color:#ece1fc;font:800 10px 'Space Grotesk',sans-serif;cursor:pointer}
+    .v8-vault-controls .v8-remove{flex:0 0 40px;border-color:#60405b;color:#f2a5bb}
+    .v8-vault-note{font:10px/1.55 'DM Mono',monospace;color:#a493b6;margin-top:12px}
+    @media(max-width:520px){.v8-vibes{grid-template-columns:1fr}.v8-vibe{min-height:unset;display:grid;grid-template-columns:35px 1fr;align-items:center;gap:5px 12px}.v8-vibe small{grid-column:2}.v8-card-layout{grid-template-columns:1fr}.v8-card-layout canvas{max-width:245px;margin:auto}.v8-vault-grid{gap:8px}.v8-fold .fold-title{font-size:12px}}
+    @media(prefers-reduced-motion:reduce){.v8-vibe,.v8-chevron{transition:none}}
   </style>
 </head>
 <body>
@@ -647,7 +683,7 @@
       <div class="feature-grid">
         <article class="feature-card feature-wide"><div class="feature-top mono"><span>01 / THE ORIGIN</span><span>◈</span></div><div class="feature-copy"><span class="feature-icon">⌘</span><h3>BUILT TO<br>BE REMIXED.</h3><p>Pick a form. Shift the energy. Watch your alter ego take shape in real time.</p></div><div class="feature-portrait"><canvas id="featureCanvas" role="img" aria-label="Example avatar with a unique outfit"></canvas><span class="portrait-scan"></span></div></article>
         <article class="feature-card feature-spectrum"><div class="feature-top mono"><span>02 / COLOR IS CODE</span><span>✳</span></div><span class="feature-big-number">12<span>×</span></span><h3>MAKE IT<br>UNMISTAKABLE.</h3><p>Twelve signal frequencies. Change your entire mood with one click.</p><div class="spectrum-swatches" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div></article>
-        <article class="feature-card feature-wear"><div class="feature-top mono"><span>03 / DRESS THE PART</span><span>↗</span></div><div class="feature-wear-icon">⟁</div><h3>NEW FORM.<br>NEW ENERGY.</h3><p>Eight outfits. Ten emblems. Face DNA you can edit for every character. Make every pixel yours.</p><a class="feature-link mono" href="#studio">OPEN THE CREATOR ↗</a></article>
+        <article class="feature-card feature-wear"><div class="feature-top mono"><span>03 / DRESS THE PART</span><span>↗</span></div><div class="feature-wear-icon">⟁</div><h3>NEW FORM.<br>NEW ENERGY.</h3><p>Eight outfits. Custom faces. Save favorite looks and make an ID card that feels like yours.</p><a class="feature-link mono" href="#studio">OPEN THE CREATOR ↗</a></article>
       </div>
     </section>
     <section class="studio-section shell" id="studio">
@@ -659,7 +695,7 @@
           <div class="studio-viewer-foot mono"><span>ALTERIMAGE // THE IDENTITY ENGINE</span><span id="avatarId">ID: AI-000000</span></div>
         </div>
         <div class="studio-controls">
-          <div class="controls-heading"><h3>BUILD YOUR ALTER EGO</h3><span class="mono">GUIDED CREATOR / V7 · BANNER FORGE</span></div>
+          <div class="controls-heading"><h3>BUILD YOUR ALTER EGO</h3><span class="mono">GUIDED CREATOR / V8 · BANNER FORGE</span></div>
           <div class="studio-tag">NO EXPERIENCE NEEDED. ONE STEP AT A TIME.</div>
           <div class="mini-preview-dock" aria-label="Live miniature avatar preview"><canvas id="miniPreviewCanvas" width="260" height="260" aria-hidden="true"></canvas><span><strong>YOUR CHARACTER PREVIEW</strong><small>PREVIEW UPDATES AS YOU DESIGN</small></span><span class="live-dot" aria-hidden="true"></span></div>
           <div id="wizardIntro" class="wizard-intro" aria-live="polite">
@@ -1225,7 +1261,7 @@ drawFaceDecor(ctx,face,a,light,faceIntensity);
       const link=document.createElement('a');link.download='alterimage-'+title+'-'+bannerState.size+'-banner.png';link.href=c.toDataURL('image/png');document.body.append(link);link.click();link.remove();document.getElementById('bannerStatus').textContent='✓ YOUR CUSTOM BANNER HAS BEEN DOWNLOADED.';
     });
     syncBannerControls();
-    function refresh(){renderAvatar(studioCanvas,state);renderAvatar(document.getElementById('miniPreviewCanvas'),state,{size:260});idEl.textContent='ID: AI-'+String(hashStr(JSON.stringify(state))%1000000).padStart(6,'0');renderBanner();}
+    function refresh(){renderAvatar(studioCanvas,state);renderAvatar(document.getElementById('miniPreviewCanvas'),state,{size:260});idEl.textContent='ID: AI-'+String(hashStr(JSON.stringify(state))%1000000).padStart(6,'0');renderBanner();if(document.getElementById('v8CardFold')?.open)renderIdentityCard();}
     // The original controls are reorganized below into a guided, eight-step creator.
     function buildChoices(elId,values,key,kind){const host=document.getElementById(elId);values.forEach(([id,name,symbol])=>{const b=document.createElement('button');b.type='button';b.dataset[key]=id;b.className=kind==='emblem'?'emblem-btn':'pick-btn';b.setAttribute('aria-label',name);b.setAttribute('aria-pressed','false');const gl=document.createElement('span');gl.className=kind==='emblem'?'glyph':'pick-symbol';gl.textContent=symbol;const label=document.createElement('span');label.textContent=name;b.append(gl,label);b.addEventListener('click',()=>{state[key]=id;syncControls();refresh();status('LOOK UPDATED // '+name);});host.append(b);});}
     buildChoices('outfitChoices',OUTFITS,'outfit');buildChoices('headgearChoices',HEADGEAR,'headgear');buildChoices('emblemChoices',EMBLEMS,'emblem','emblem');
@@ -1353,6 +1389,30 @@ document.getElementById('resetFaceBtn').addEventListener('click',()=>{state.face
       syncControls();refresh();renderFaceProfileStrip();renderWorldPreviews();
       goWizardStep(1,{noScroll:true});status('MINIMAL MODE APPLIED · CUSTOMIZE ANY STEP WHENEVER YOU WANT.');
     });
+
+    // Optional Vibe Kits: one-click coherent looks, preserving the selected character.
+    const v8Vibes=document.createElement('details');v8Vibes.className='v8-fold';v8Vibes.id='v8Vibes';
+    v8Vibes.innerHTML=`<summary><span class="fold-title">✦ TRY A VIBE <small>Three ready-made moods. Everything stays editable.</small></span><span class="v8-chevron">+</span></summary>
+      <div class="v8-fold-body"><div class="v8-vibes">
+      <button type="button" class="v8-vibe" data-v8-vibe="ghost"><span class="v8-vibe-swatch" style="--v8a:#72f6f2;--v8b:#d1ffff"></span><strong>GHOST MODE</strong><small>Icy glow · silent mask</small></button>
+      <button type="button" class="v8-vibe" data-v8-vibe="voltage"><span class="v8-vibe-swatch" style="--v8a:#ff5bb6;--v8b:#ffd56f"></span><strong>VOLTAGE</strong><small>Hot neon · street energy</small></button>
+      <button type="button" class="v8-vibe" data-v8-vibe="sol"><span class="v8-vibe-swatch" style="--v8a:#9945ff;--v8b:#14f195"></span><strong>SOL SHIFT</strong><small>Purple / mint · orbit world</small></button>
+      </div></div>`;
+    wizardScreens[0].append(v8Vibes);
+    const v8VibeSettings={
+      ghost:{color:'cyan',outfit:'stealth',headgear:'none',emblem:'none',backdrop:'void',eyes:'basic',mouth:'none',eyeColor:'cyan',plate:'chrome',intensity:84,grain:8},
+      voltage:{color:'rose',outfit:'street',headgear:'headphones',emblem:'bolt',backdrop:'storm',eyes:'slits',mouth:'grin',eyeColor:'gold',plate:'graphite',intensity:95,grain:25},
+      sol:{color:'purple',outfit:'astro',headgear:'none',emblem:'orbit',backdrop:'sol-orbit',bgTheme:'genesis',eyes:'basic',mouth:'none',eyeColor:'mint',plate:'obsidian',intensity:87,grain:16}
+    };
+    v8Vibes.querySelectorAll('[data-v8-vibe]').forEach(button=>button.addEventListener('click',()=>{
+      const opts=v8VibeSettings[button.dataset.v8Vibe];
+      const {eyes,mouth,eyeColor,plate,...body}=opts;
+      Object.assign(state,body,{seed:Math.floor(Math.random()*9999999)});
+      state.faceProfiles[state.style]={...state.faceProfiles[state.style],eyes,mouth,eyeColor,plate};
+      syncControls();refresh();renderWorldPreviews();renderFaceProfileStrip();
+      v8Vibes.open=false;
+      goWizardStep(1,{noScroll:true});status('VIBE APPLIED. MAKE IT YOUR OWN.');
+    }));
     const intro=document.createElement('p');intro.className='wizard-helper';intro.innerHTML='<b>Start here:</b> choose one of the four characters below. You can always return and switch.';
     wizardScreens[0].prepend(intro);
     // The small portraits are a handy place to revisit individually saved face DNA.
@@ -1370,6 +1430,88 @@ document.getElementById('resetFaceBtn').addEventListener('click',()=>{state.face
     wizardScreens[6].append(fxGroups[0],document.getElementById('solanaLab'));
     const review=document.createElement('div');review.className='wizard-summary';review.innerHTML='<strong>✳ Your identity, your rules.</strong><p>Here is your finished look. Nothing gets published automatically.</p><div id="wizardReviewDetails" class="wizard-summary-list"></div>';
     wizardScreens[7].append(review,fxGroups[1],fxGroups[2],document.querySelector('.sample-count'),document.querySelector('.control-actions'),document.getElementById('downloadBtn'),document.querySelector('.studio-output'));
+
+    // Optional shareable ID card, rendered locally from your actual avatar canvas.
+    const v8CardFold=document.createElement('details');v8CardFold.className='v8-fold';v8CardFold.id='v8CardFold';
+    v8CardFold.innerHTML=`<summary><span class="fold-title">◈ MAKE YOUR ID CARD <small>A collectible-style portrait for X. No account needed.</small></span><span class="v8-chevron">+</span></summary>
+      <div class="v8-fold-body v8-card-layout"><canvas id="v8IdentityCard" width="1200" height="1500" role="img" aria-label="Your identity card preview"></canvas>
+      <div class="v8-info"><p>Your finished character, signal color, and custom identity code — all in one ready-to-share card.</p><button type="button" class="v8-action" id="v8DownloadCard">↓ DOWNLOAD ID CARD</button>
+      <p class="v8-disclaimer">LOCALLY GENERATED IMAGE · NO NFT OR ON-CHAIN CLAIM</p></div></div>`;
+    wizardScreens[7].append(v8CardFold);
+    function v8IdentityCode(look){return 'ALT-'+String(hashStr(JSON.stringify(look))%100000000).padStart(8,'0');}
+    function renderIdentityCard(){
+      const c=document.getElementById('v8IdentityCard');if(!c)return;
+      const ctx=c.getContext('2d'),W=c.width,H=c.height,pal=PALETTES[state.color];
+      ctx.fillStyle='#090b14';ctx.fillRect(0,0,W,H);
+      const gl=ctx.createRadialGradient(860,460,10,700,560,850);gl.addColorStop(0,rgba(pal.hex,.33));gl.addColorStop(1,rgba(pal.hex,0));ctx.fillStyle=gl;ctx.fillRect(0,0,W,H);
+      ctx.fillStyle=pal.hex;ctx.fillRect(75,79,48,10);ctx.fillRect(134,79,15,10);
+      ctx.fillStyle='#f5eeff';ctx.textBaseline='alphabetic';ctx.textAlign='left';ctx.font='900 86px Syne, sans-serif';ctx.fillText('ALTERIMAGE',75,191);
+      ctx.fillStyle='#a995c4';ctx.font='21px monospace';ctx.fillText('// PERSONAL IDENTITY FILE 001',77,231);
+      const avatar=document.createElement('canvas');renderAvatar(avatar,state,{size:1000});
+      ctx.save();ctx.beginPath();ctx.roundRect(74,284,1052,1010,26);ctx.clip();ctx.drawImage(avatar,74,264,1052,1052);ctx.restore();
+      ctx.lineWidth=3;ctx.strokeStyle=rgba(pal.hex,.77);ctx.strokeRect(74,284,1052,1010);
+      ctx.fillStyle='#151626';ctx.fillRect(74,1314,1052,117);
+      ctx.fillStyle=pal.hex;ctx.font='700 21px monospace';ctx.fillText(state.style.toUpperCase()+' / '+pal.name,102,1361);
+      const given=(state.name.trim()||'UNKNOWN ENTITY').toUpperCase();
+      ctx.fillStyle='#f4edff';ctx.font='800 39px Syne, sans-serif';ctx.fillText(given.slice(0,22),102,1411);
+      ctx.textAlign='right';ctx.fillStyle='#bbaad4';ctx.font='18px monospace';ctx.fillText(v8IdentityCode(state),1098,1403);
+    }
+    v8CardFold.addEventListener('toggle',()=>{if(v8CardFold.open)renderIdentityCard();});
+    document.getElementById('v8DownloadCard').addEventListener('click',()=>{
+      renderIdentityCard();const canvas=document.getElementById('v8IdentityCard');const a=document.createElement('a');
+      a.download='alterimage-'+state.style+'-identity-card.png';a.href=canvas.toDataURL('image/png');
+      document.body.append(a);a.click();a.remove();status('YOUR IDENTITY CARD IS READY TO SHARE.');
+    });
+    // A small, browser-only vault: no account, cloud storage, or public feed.
+    const v8VaultFold=document.createElement('details');v8VaultFold.className='v8-fold';v8VaultFold.id='v8VaultFold';
+    v8VaultFold.innerHTML=`<summary><span class="fold-title">✧ MY LOOKS <small>Keep up to six favorites on this device.</small></span><span class="v8-chevron">+</span></summary>
+      <div class="v8-fold-body"><div id="v8VaultEmpty">Your collection is empty. Tap SAVE MY LOOK above to add your first design.</div><div class="v8-vault-grid" id="v8VaultGrid"></div>
+      <p class="v8-vault-note">Only saved in this browser. Clearing browser data deletes this collection. Use Share My Look to keep a portable link.</p></div>`;
+    wizardScreens[7].append(v8VaultFold);
+    const v8VaultKey='alterimage-v8-vault';
+    function v8GetVault(){
+      try{const data=JSON.parse(localStorage.getItem(v8VaultKey)||'[]');
+        return Array.isArray(data)?data.filter(v=>v&&typeof v==='object'&&v.look&&typeof v.look==='object'&&typeof v.id==='string').slice(0,6):[];
+      }catch(err){return [];}
+    }
+    function v8RenderVault(){
+      const grid=document.getElementById('v8VaultGrid');grid.replaceChildren();const items=v8GetVault();
+      document.getElementById('v8VaultEmpty').hidden=items.length>0;
+      items.forEach(item=>{
+        const entry=document.createElement('div');entry.className='v8-vault-card';
+        const cv=document.createElement('canvas');cv.setAttribute('aria-hidden','true');
+        renderAvatar(cv,validState(item.look),{size:280});
+        const h=document.createElement('div');h.className='v8-vault-title';h.textContent=(item.label||'MY LOOK').slice(0,40);
+        const sub=document.createElement('div');sub.className='v8-vault-sub';sub.textContent=item.when||'SAVED LOOK';
+        const row=document.createElement('div');row.className='v8-vault-controls';
+        const load=document.createElement('button');load.type='button';load.textContent='LOAD';
+        load.setAttribute('aria-label','Load '+item.label);
+        load.addEventListener('click',()=>{
+          state=validState(item.look);bannerState=validatedBanner(item.look.banner);syncControls();syncBannerControls();refresh();renderFaceProfileStrip();renderWorldPreviews();
+          renderWizardReview();if(v8CardFold.open)renderIdentityCard();
+          status('YOUR FAVORITE LOOK HAS BEEN LOADED.');
+        });
+        const remove=document.createElement('button');remove.type='button';remove.textContent='×';remove.className='v8-remove';remove.setAttribute('aria-label','Delete '+item.label);
+        remove.addEventListener('click',()=>{
+          const remaining=v8GetVault().filter(x=>x.id!==item.id);
+          try{localStorage.setItem(v8VaultKey,JSON.stringify(remaining));v8RenderVault();status('LOOK REMOVED FROM THIS BROWSER.');}
+          catch(err){status('BROWSER STORAGE UNAVAILABLE.');}
+        });
+        row.append(load,remove);entry.append(cv,h,sub,row);grid.append(entry);
+      });
+    }
+    function v8SaveVault(){
+      try{
+        const look={...state,faceProfiles:structuredClone(state.faceProfiles),banner:{...bannerState}};
+        const digest=JSON.stringify(look);let list=v8GetVault().filter(x=>JSON.stringify(x.look)!==digest);
+        const label=((state.name.trim()&&state.name!=='UNKNOWN ENTITY')?state.name:state.style.toUpperCase()+' / '+PALETTES[state.color].name).slice(0,40);
+        list.unshift({id:String(Date.now())+'-'+Math.floor(Math.random()*999999),label,when:new Date().toLocaleDateString(),look});
+        localStorage.setItem(v8VaultKey,JSON.stringify(list.slice(0,6)));
+        if(v8VaultFold.open)v8RenderVault();status('SAVED! YOUR LOOK IS IN MY LOOKS.');
+      }catch(err){status('STORAGE UNAVAILABLE. USE SHARE MY LOOK FOR A LINK.');}
+    }
+    document.getElementById('saveBtn').addEventListener('click',v8SaveVault);
+    v8VaultFold.addEventListener('toggle',()=>{if(v8VaultFold.open)v8RenderVault();});
     const finishNote=document.createElement('p');finishNote.className='wizard-finish-info';finishNote.textContent='Download a PNG, save this look in your browser, or copy a link to share. No wallet or account needed.';wizardScreens[7].append(finishNote);
     // Cover thumbnails create real previews using the same drawing engine.
     document.querySelectorAll('.style-btn').forEach(btn=>{
@@ -1398,7 +1540,7 @@ document.getElementById('resetFaceBtn').addEventListener('click',()=>{state.face
       wizardBack.disabled=index===0;
       wizardNext.innerHTML=index===7?'EDIT MY CHARACTER <span aria-hidden="true">↺</span>':'NEXT: '+WIZARD_STEPS[index+1][0].toUpperCase()+' <span aria-hidden="true">→</span>';
       document.getElementById('wizardHint').textContent=index===7?'ALL 8 STEPS COMPLETED':'UP NEXT: '+WIZARD_STEPS[index+1][0].toUpperCase();
-      if(index===7)renderWizardReview();
+      if(index===7){renderWizardReview();if(v8CardFold.open)renderIdentityCard();if(v8VaultFold.open)v8RenderVault();}
       if(!options.noScroll){const target=document.getElementById('wizardIntro');const rect=target.getBoundingClientRect();if(rect.top<0||rect.top>window.innerHeight*.78)target.scrollIntoView({block:'start',behavior:'auto'});}
     }
     wizardBack.addEventListener('click',()=>goWizardStep(wizardIndex-1));
