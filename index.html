@@ -586,6 +586,8 @@
     .banner-preview-outer{border-radius:12px;overflow:hidden;line-height:0;box-shadow:0 12px 45px #0007;border:1px solid #564e65;background:#171124}
     #bannerCanvas{width:100%;height:auto;display:block}
     .banner-preview-foot{display:flex;align-items:start;gap:8px;justify-content:space-between;margin-top:15px;color:#ab9dbf;font:11px/1.6 'Space Grotesk',sans-serif}
+    .banner-fomo-note{font:10px/1.5 'Space Grotesk',sans-serif;color:#bdafd2;margin:10px 0 0;padding:10px 12px;border:1px solid rgba(170,144,206,.30);background:rgba(46,31,68,.35);border-radius:9px}
+    .banner-fomo-note[hidden]{display:none}
     .banner-cta{border:0;background:#d4ff86;color:#161a12;border-radius:999px;padding:15px 22px;font:800 12px 'Space Grotesk',sans-serif;letter-spacing:.03em;cursor:pointer;width:100%;margin-top:18px;transition:transform .2s,background .2s}
     .banner-cta:hover{background:#f3ffca;transform:translateY(-2px)}
     .banner-cta:focus-visible,.banner-tool button:focus-visible,.banner-tool input:focus-visible{outline:2px solid #dcff91;outline-offset:3px}
@@ -772,7 +774,7 @@
 
       <div class="banner-lab reveal" id="bannerLab" aria-labelledby="bannerHeading">
         <div class="banner-head">
-          <div><span class="banner-kicker">// 02 — THE BANNER FORGE / BONUS STUDIO</span><h3 id="bannerHeading">YOUR CHARACTER.<br><em>YOUR COVER.</em></h3><p>Finished your avatar? Turn that same character into a matching X or Discord banner. Pick a size, style, and words—then download your custom cover.</p></div>
+          <div><span class="banner-kicker">// 02 — THE BANNER FORGE / BONUS STUDIO</span><h3 id="bannerHeading">YOUR CHARACTER.<br><em>YOUR COVER.</em></h3><p>Finished your avatar? Turn that same character into a matching X, FOMO, or Discord banner. Pick a size, style, and words—then download your custom cover.</p></div>
           <span class="banner-bubble">✦ SYNCED TO YOUR AVATAR</span>
         </div>
         <div class="banner-workspace">
@@ -780,11 +782,12 @@
             <div class="banner-preview-meta"><span>● LIVE BANNER PREVIEW</span><span id="bannerSizeLabel">X HEADER · 1500 × 500</span></div>
             <div class="banner-preview-outer"><canvas id="bannerCanvas" width="1500" height="500" role="img" aria-label="Live preview of the customized ALTERIMAGE banner"></canvas></div>
             <div class="banner-preview-foot"><span>✧ Your avatar, facial details, outfits, and signal colors sync automatically.</span><span>PNG / HIGH RES</span></div>
+            <p class="banner-fomo-note" id="bannerFomoNote" hidden>FOMO profile preset · Suggested 1500 × 600 crop. FOMO may crop banners differently on each device—preview after uploading.</p>
             <button type="button" class="banner-cta" id="bannerDownload">↓ DOWNLOAD MY BANNER</button>
             <div id="bannerStatus" role="status" aria-live="polite"></div>
           </div>
           <div class="banner-settings">
-            <div class="banner-tool"><div class="banner-tool-heading"><span>01 / CHOOSE A BANNER SIZE</span><small>FIT YOUR PLATFORM</small></div><div class="banner-options" role="group" aria-label="Banner size"><button type="button" data-banner-size="x" aria-pressed="true">X / TWITTER</button><button type="button" data-banner-size="discord" aria-pressed="false">DISCORD</button><button type="button" data-banner-size="community" aria-pressed="false">COMMUNITY</button></div></div>
+            <div class="banner-tool"><div class="banner-tool-heading"><span>01 / CHOOSE A BANNER SIZE</span><small>FIT YOUR PLATFORM</small></div><div class="banner-options" role="group" aria-label="Banner size"><button type="button" data-banner-size="x" aria-pressed="true">X / TWITTER</button><button type="button" data-banner-size="fomo" aria-pressed="false">FOMO</button><button type="button" data-banner-size="discord" aria-pressed="false">DISCORD</button><button type="button" data-banner-size="community" aria-pressed="false">COMMUNITY</button></div></div>
             <div class="banner-tool"><div class="banner-tool-heading"><span>02 / CHOOSE A LAYOUT</span></div><div class="banner-options" role="group" aria-label="Banner layout"><button type="button" data-banner-layout="right" aria-pressed="true">CHARACTER RIGHT</button><button type="button" data-banner-layout="left" aria-pressed="false">CHARACTER LEFT</button><button type="button" data-banner-layout="none" aria-pressed="false">TEXT ONLY</button></div></div>
             <div class="banner-tool"><div class="banner-tool-heading"><span>03 / ADD YOUR TEXT</span></div><div class="banner-text-fields"><div><label for="bannerTitle">BANNER TITLE</label><input id="bannerTitle" class="banner-input" type="text" maxlength="32" value="ALTERIMAGE" placeholder="YOUR NAME" spellcheck="false"></div><div><label for="bannerSubtitle">TAGLINE</label><input id="bannerSubtitle" class="banner-input" type="text" maxlength="52" value="YOUR NEXT SELF STARTS HERE." placeholder="YOUR TAGLINE" spellcheck="false"></div></div></div>
             <div class="banner-tool"><div class="banner-tool-heading"><span>04 / CHOOSE A THEME</span></div><div class="banner-options" role="group" aria-label="Banner theme"><button type="button" data-banner-theme="signal" aria-pressed="true">MY SIGNAL</button><button type="button" data-banner-theme="solana" aria-pressed="false">SOLANA</button><button type="button" data-banner-theme="noir" aria-pressed="false">DARK MODE</button><button type="button" data-banner-theme="custom" aria-pressed="false">CUSTOM</button></div><div class="banner-color-row" id="bannerCustomRow" hidden><label>COLOR 1 <input id="bannerColor1" type="color" value="#9945ff"></label><label>COLOR 2 <input id="bannerColor2" type="color" value="#14f195"></label></div><p class="banner-hint">The MY SIGNAL theme follows your character's current signal color.</p></div>
@@ -853,7 +856,7 @@ function freshFaceProfiles(){return Object.fromEntries(STYLE_NAMES.map(style=>[s
 function resolveFace(config){const style=STYLE_NAMES.includes(config.style)?config.style:'specter';return {...FACE_PRESETS[style],...(config.faceProfiles&&config.faceProfiles[style]||{})};}
     const DEFAULT_STATE={style:'specter',color:'purple',name:'UNKNOWN ENTITY',intensity:72,grain:40,seed:12019,outfit:'phantom',headgear:'none',emblem:'star',backdrop:'sol-gradient',bgTheme:'genesis',bgColorA:'#9945ff',bgColorB:'#14f195',bgGlow:75,bgPattern:65,bgMark:true,faceProfiles:freshFaceProfiles()};
     let state={...DEFAULT_STATE,faceProfiles:freshFaceProfiles()};
-    const BANNER_SIZES={x:{w:1500,h:500,label:'X HEADER · 1500 × 500'},discord:{w:960,h:540,label:'DISCORD · 960 × 540'},community:{w:1600,h:900,label:'COMMUNITY · 1600 × 900'}};
+    const BANNER_SIZES={x:{w:1500,h:500,label:'X HEADER · 1500 × 500'},fomo:{w:1500,h:600,label:'FOMO PROFILE · 1500 × 600'},discord:{w:960,h:540,label:'DISCORD · 960 × 540'},community:{w:1600,h:900,label:'COMMUNITY · 1600 × 900'}};
     const BANNER_DEFAULT={size:'x',layout:'right',theme:'signal',title:'ALTERIMAGE',subtitle:'YOUR NEXT SELF STARTS HERE.',color1:'#9945ff',color2:'#14f195'};
     let bannerState={...BANNER_DEFAULT};
     function validatedBanner(input){if(!input||typeof input!=='object')return {...BANNER_DEFAULT};const choice=(key,values)=>values.includes(input[key])?input[key]:BANNER_DEFAULT[key];return{size:choice('size',Object.keys(BANNER_SIZES)),layout:choice('layout',['right','left','none']),theme:choice('theme',['signal','solana','noir','custom']),title:typeof input.title==='string'?input.title.slice(0,32).replace(/[<>]/g,''):BANNER_DEFAULT.title,subtitle:typeof input.subtitle==='string'?input.subtitle.slice(0,52).replace(/[<>]/g,''):BANNER_DEFAULT.subtitle,color1:validWorldHex(input.color1,BANNER_DEFAULT.color1),color2:validWorldHex(input.color2,BANNER_DEFAULT.color2)};}
@@ -1202,6 +1205,7 @@ drawFaceDecor(ctx,face,a,light,faceIntensity);
       const canvas=document.getElementById('bannerCanvas');if(!canvas)return;
       const {w:W,h:H,label}=BANNER_SIZES[bannerState.size];canvas.width=W;canvas.height=H;
       document.getElementById('bannerSizeLabel').textContent=label;
+      document.getElementById('bannerFomoNote').hidden=bannerState.size!=='fomo';
       const ctx=canvas.getContext('2d');const pal=PALETTES[state.color]||PALETTES.purple;
       let C1='#231742',C2=pal.hex;
       if(bannerState.theme==='solana'){C1='#9945ff';C2='#14f195';}
@@ -1212,7 +1216,7 @@ drawFaceDecor(ctx,face,a,light,faceIntensity);
       bg.addColorStop(0,'#070b13');bg.addColorStop(.55,bannerState.theme==='noir'?'#121722':'#121126');bg.addColorStop(1,'#070a13');ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
       ctx.save();const radial=ctx.createRadialGradient(W*.85,H*.42,H*.07,W*.76,H*.47,W*.77);radial.addColorStop(0,rgba(C1,.46));radial.addColorStop(.56,rgba(C2,.17));radial.addColorStop(1,rgba(C1,0));ctx.fillStyle=radial;ctx.fillRect(0,0,W,H);ctx.restore();
       const side=bannerState.layout==='left'?'left':'right';
-      const anchor=side==='right'?W*.78:W*.22;
+      const anchor=bannerState.size==='fomo'?(side==='right'?W*.76:W*.24):(side==='right'?W*.78:W*.22);
       // A high-contrast kinetic grid and light architecture, unique to each saved identity.
       ctx.save();ctx.lineWidth=Math.max(.8,H*.0017);ctx.strokeStyle=rgba(C2,.14);
       const step=Math.max(22,H*.093);for(let x=0;x<=W;x+=step){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}for(let y=0;y<=H;y+=step){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}ctx.restore();
@@ -1229,7 +1233,9 @@ drawFaceDecor(ctx,face,a,light,faceIntensity);
         ctx.save();ctx.globalAlpha=.97;const drawSize=H*1.63;ctx.drawImage(portrait,anchor-drawSize*.5,H*.49-drawSize*.5,drawSize,drawSize);ctx.restore();
       }
       // Legible title opposite the portrait, with dedicated safe area for X avatar overlay.
-      const textLeft=bannerState.layout!=='left';const tx=textLeft?W*.075:W*.48;const maxW=textLeft?W*.56:W*.45;
+      const textLeft=bannerState.layout!=='left';const isFomo=bannerState.size==='fomo';
+      const tx=isFomo?(textLeft?W*.115:W*.52):(textLeft?W*.075:W*.48);
+      const maxW=isFomo?(textLeft?W*.46:W*.36):(textLeft?W*.56:W*.45);
       const fontFamily="'Syne', 'Arial Black', sans-serif";
       ctx.save();ctx.textAlign='left';ctx.textBaseline='alphabetic';
       ctx.fillStyle=rgba(C2,.96);ctx.font=`700 ${Math.max(12,H*.037)}px 'DM Mono',monospace`;ctx.fillText('ALTERIMAGE  /  BANNER FORGE',tx,H*.23,maxW);
